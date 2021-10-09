@@ -103,7 +103,7 @@ fun main() {
 
     println("git commit -m \"Update\"")
 
-    result = ProcessBuilder("git", "commit", "-m", SimpleDateFormat("YYYY-MM-DD:HH:mm:ss").format(Date())).start().waitFor()
+    result = ProcessBuilder("git", "commit", "-m", SimpleDateFormat("YYYY-MM-dd:HH:mm:ss").format(Date())).start().waitFor()
     if (result != 0) {
         throw IOException("Git commit failed with result $result")
     }
