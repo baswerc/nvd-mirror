@@ -5,6 +5,8 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.internal.wait
 import java.io.*
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.zip.GZIPInputStream
 
 val client: OkHttpClient = OkHttpClient.Builder().connectionPool(ConnectionPool()).build()
@@ -100,7 +102,8 @@ fun main() {
     }
 
     println("git commit -m \"Update\"")
-    result = ProcessBuilder("git", "commit", "-m", "\"Update\"").start().waitFor()
+
+    result = ProcessBuilder("git", "commit", "-m", SimpleDateFormat("YYYY-MM-DD:HH:mm:ss").format(Date())).start().waitFor()
     if (result != 0) {
         throw IOException("Git commit failed with result $result")
     }
