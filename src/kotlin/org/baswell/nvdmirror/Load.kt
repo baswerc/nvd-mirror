@@ -3,10 +3,8 @@ package org.baswell.nvdmirror
 import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
+import okhttp3.internal.wait
+import java.io.*
 import java.util.zip.GZIPInputStream
 
 val client: OkHttpClient = OkHttpClient.Builder().connectionPool(ConnectionPool()).build()
@@ -94,6 +92,25 @@ fun main() {
             }
         }
     }
+
+    println("git add *")
+    var result = ProcessBuilder("git", "add", "*").start().waitFor()
+    if (result != 0) {
+        throw IOException("Git add failed with result $result")
+    }
+
+    println("git commit -m \"Update\"")
+    result = ProcessBuilder("git", "commit", "-m", "\"Update\"").start().waitFor()
+    if (result != 0) {
+        throw IOException("Git commit failed with result $result")
+    }
+
+    println("git push")
+    result = ProcessBuilder("git", "push").start().waitFor()
+    if (result != 0) {
+        throw IOException("Git pushed failed with result $result")
+    }
+
 
 }
 
