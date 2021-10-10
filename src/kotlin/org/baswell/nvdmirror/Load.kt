@@ -95,6 +95,10 @@ fun main() {
         }
     }
 
+    val timestamp = SimpleDateFormat("YYYY-MM-dd:HH:mm:ss").format(Date())
+
+    FileWriter("README.md").use { it.write("This site mirrors the NVD JSON Feeds site at https://nvd.nist.gov/vuln/data-feeds#JSON_FEED. It was last synchronized at $timestamp.") }
+
     println("git add *")
     var result = ProcessBuilder("git", "add", "*").start().waitFor()
     if (result != 0) {
@@ -103,7 +107,7 @@ fun main() {
 
     println("git commit -m \"Update\"")
 
-    result = ProcessBuilder("git", "commit", "-m", SimpleDateFormat("YYYY-MM-dd:HH:mm:ss").format(Date())).start().waitFor()
+    result = ProcessBuilder("git", "commit", "-m", timestamp).start().waitFor()
     if (result != 0) {
         throw IOException("Git commit failed with result $result")
     }
@@ -113,6 +117,7 @@ fun main() {
     if (result != 0) {
         throw IOException("Git pushed failed with result $result")
     }
+
 
 
 }
