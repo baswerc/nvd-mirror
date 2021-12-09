@@ -9,7 +9,7 @@
     <version>1.0.0</version>
 
     <properties>
-        <kotlin.version>1.5.31</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
     </properties>
 
