@@ -1,1 +1,1 @@
-This site mirrors the NVD JSON Feeds site at https://nvd.nist.gov/vuln/data-feeds#JSON_FEED. It was last synchronized at 2022-03-23:04:33:44.
+This site mirrors the NVD JSON Feeds site at https://nvd.nist.gov/vuln/data-feeds#JSON_FEED. It was last synchronized at 2022-03-24:05:28:31.
